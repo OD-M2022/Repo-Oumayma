@@ -152,7 +152,7 @@
       </div>
     </div>
 <br>
-<div class ="row">
+<!--iv class ="row">
 <div class="col-md-12">
   <label class ="from-group" ></label>
    <table id='liste_enfant' class="table table-striped" style="width: max-content;">
@@ -227,7 +227,7 @@
 
    <input type="hidden" id='rowlenth_Enfant' name="rowlenth_Enfant">
 </div>
-</div>
+</div>-->
 </div>
 
   <div class="card-box">
@@ -270,7 +270,7 @@
         </div>
       </div>
 <br>
-<div class="row">
+<!--<div class="row">
  <div  class="col-md-12">
     <div class="from-group" >
       <label>Liste des liens de parentés</label></div>
@@ -394,7 +394,7 @@
     <div mat-dialog-actions align="end">
       <input type="button" class="add" value="Ajouter" ></div>
     </div>
- </div>
+ </div>-->
 <br>
 <div class ="row">
   <div class="col-md-12">
@@ -706,7 +706,7 @@
       </div>
 
 
-      <div class="row">
+    <!--  <div class="row">
         <div  class="col-md-12">
            <div class="from-group" >
              <label>Diplômes</label></div>
@@ -950,9 +950,9 @@
 <div mat-dialog-actions align="end">
   <input type="button" class="add" value="Ajouter">
 </div>>
-</div>
+</div>-->
 
-  <div class="card-box">
+ <!-- <div class="card-box">
     <h3 class="card-title">Historique Aziza</h3>
     <table id='Historique1' class="table table-striped" style="width: max-content;">
       <thead>
@@ -1137,46 +1137,60 @@
         </thead>
         <tbody>
 
+              <tr *ngFor="let field of fieldArray; let i = index">
+                <td>
+                  <input [(ngModel)]="field.AnneeFormation" class="form-control" type="text" name="{{field.AnneeFormation}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="field.NombreJours" class="form-control" type="text" name="{{field.NombreJours}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="field.SpecialiteFormation" class="form-control" type="text" name="{{field.SpecialiteFormation}}" />
+                </td>
+                <td>
+                  <input [(ngModel)]="field.OrganismeFormation" class="form-control" type="text" name="{{field.OrganismeFormation}}" />
+                </td>
+                <td>
+                  <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                </td>
+              </tr>
 
-         <tr  id ='historiqueFormation' *ngFor="let item of historiqueFormation" name="historiqueFormation">
-            <td><input   type="text"  class="form-control"  name="{{item.AnneeFormation}}"
-              [(ngModel)]="item.AnneeFormation" required /></td>
-            <td><input   type="text"  class="form-control"  name="{{item.NombreJours}}"
-              [(ngModel)]="item.NombreJours" required/></td>
-            <td><input   type="text"  class="form-control"  name="{{item.SpecialiteFormation}}"
-              [(ngModel)]="item.SpecialiteFormation" required/></td>
-            <td><input   type="text"  class="form-control"  name="{{item.OrganismeFormation}}"
-              [(ngModel)]="item.OrganismeFormation"required/></td>
-            <td class="table-action">
+              <tr>
+                <td>
+                  <input class="form-control" type="text" id="newAttributeAnneeFormation" [(ngModel)]="newAttribute.AnneeFormation"
+                    name="newAttributeAnneeFormation" />
+                </td>
+                <td>
+                  <input class="form-control" type="text" id="newAttributeNombreJours" [(ngModel)]="newAttribute.NombreJours"
+                    name="newAttributeNombreJours" />
+                </td>
+                <td>
+                  <input class="form-control" type="text" id="newAttributeSpecialiteFormation" [(ngModel)]="newAttribute.SpecialiteFormation"
+                    name="newAttributeSpecialiteFormation" />
+                </td>
+                <td>
+                  <input class="form-control" type="text" id="newAttributeOrganismeFormation" [(ngModel)]="newAttribute.OrganismeFormation"
+                    name="newAttributeOrganismeFormation" />
+                </td>
+                <td>
+                  <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+                </td>
+              </tr>
 
-            <button type="button" class="supp" (click)="DeleteRow()">
-              <i class="fa fa-trash-o align-middle"></i> </button>
-          </td>
-         </tr>
 
          </tbody>
        </table>
-<div mat-dialog-actions align="end">
-        <input type="button" class="add" value="Ajouter" (click)="AddRowHisto()">
-      </div>
+
   </div>
  </div>
-</div>
+</div>-->
 
 
-
+    </div>
 <div mat-dialog-actions align="end">
  <button type="submit" class="btn btn-danger"style="margin: 15px;"  id="valider" name="valider"  >
     <i class="fa fa-send"></i> Sauvgarder </button></div>
   </form>
-
-
-
-
-
-
-
-
 
 
 

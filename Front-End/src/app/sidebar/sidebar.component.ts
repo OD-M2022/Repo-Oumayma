@@ -10,6 +10,7 @@ declare const $: any;
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
+
 export class SidebarComponent implements OnInit {
 
   opts: ISlimScrollOptions;
@@ -24,11 +25,12 @@ export class SidebarComponent implements OnInit {
   callView :boolean = false;
   taskView :boolean = false;
 
+  isAdmin: boolean = false
 
   constructor(private location:Location,private router: Router, private activatedRoute: ActivatedRoute,private renderer:Renderer2) {
-    
+
     router.events.subscribe((event: Event) => {
-      
+
       if (event instanceof NavigationStart) {
         $(".modal").modal("hide");
         //console.log(event.url);
@@ -41,7 +43,7 @@ export class SidebarComponent implements OnInit {
         //console.log(this.url);
         //console.log(this.url2);
 
-        let height = $(window).height();	
+        let height = $(window).height();
         $(".page-wrapper").css("min-height", height);
 
         $(".main-wrapper").removeClass('slide-nav-toggle');
@@ -159,14 +161,18 @@ export class SidebarComponent implements OnInit {
     }
 
     var h=$(window).height()-60;
-    $('.slimscroll-wrapper').height(h); 
-    
-    $(window).resize(function(){
-    var h=$(window).height()-60; 
     $('.slimscroll-wrapper').height(h);
-    }); 
+
+    $(window).resize(function(){
+    var h=$(window).height()-60;
+    $('.slimscroll-wrapper').height(h);
+    });
 
 
+    if (localStorage.getItem('Employee')) {
+      const storage = JSON.parse(localStorage.getItem('Employee'))
+      this.isAdmin = storage.admin
+    }
   }
 
 

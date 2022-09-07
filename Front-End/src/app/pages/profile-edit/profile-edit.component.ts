@@ -28,28 +28,36 @@ export class ProfileEditComponent implements OnInit {
   historiqueFormation :any = []
   employee : Employee;
 
-  constructor(private employeesService: EmployeesService) {
+    private fieldArray: Array<any> = [];
 
-    this.employee = new Employee();
 
-   }
+    public newAttribute: any = {};
+
+    constructor(private employeesService: EmployeesService) {this.employee = new Employee(); }
+
+    addFieldValue() {
+
+       this.fieldArray.push(this.newAttribute)
+       this.newAttribute = {};
+
+        /*console.log(this.fieldArray)
+        console.log(this.newAttribute)*/
+    }
+
+    deleteFieldValue(index) {
+        this.fieldArray.splice(index, 1);
+    }
 
   ngOnInit() {
-/*
-    let data = {} as HistoriqueFormation;
-    data.AnneeFormation='';
-    data.NombreJours='';
-    data.SpecialiteFormation='';
-    data.OrganismeFormation='';
-   this.historiqueFormation.push(data)*/
+
+    this.newAttribute.AnneeFormation='';
+    this.newAttribute.NombreJours='';
+    this.newAttribute.SpecialiteFormation='';
+    this.newAttribute.OrganismeFormation='';
 
     }
 
-   DeleteRow(){
-
-   }
-
-   AddRowHisto(){
+  /* AddRowHisto(){
 
     let data = {} as HistoriqueFormation;
     data.AnneeFormation='';
@@ -58,14 +66,15 @@ export class ProfileEditComponent implements OnInit {
     data.OrganismeFormation='';
 
   this.historiqueFormation.push(data);
-  console.log(this.historiqueFormation)
+  // console.log(this.historiqueFormation)
   //this.employee.historiqueFormation= this.historiqueFormation
 
-}
+}*/
 
   createEmp(form: NgForm){
 
-    this.employee.historiqueFormation=this.historiqueFormation
+    console.log(this.fieldArray)
+    console.log(this.newAttribute)
 
      this.employeesService.createEmployee(this.employee).subscribe(result => {
      console.log("result ==>", result)

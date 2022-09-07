@@ -2,16 +2,19 @@
         <div class="sidebar-inner slimscroll-wrap" slimScroll [options]="opts">
           <div id="sidebar-menu" class="sidebar-menu">
             <ul *ngIf="homeView">
-              <li [ngClass]="[url === 'dashboard'? 'active' : 'inactive',url === ''? 'active' : 'inactive']">
+             <!-- <li [ngClass]="[url === 'dashboard'? 'active' : 'inactive',url === ''? 'active' : 'inactive']">
                 <a routerLink="dashboard"><i class="la la-dashboard"></i> <span> Dashboard </span></a>
-              </li>
+              </li>-->
               <li><a routerLink="profile/edit" [ngClass]="url2 === 'profile' ? 'active' : 'null'">
                 My profile </a>
               </li>
-                <li class="submenu">
-                <a class="noti-dot" [ngClass]="url === 'employees'? 'subdrop' : 'null'"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+
+                <li class="submenu" *ngIf="isAdmin">
+                <a class="noti-dot" [ngClass]="url === 'employees'? 'subdrop' : 'null'"><i class="la la-user"
+                  name="Employees" ngModel required #Employees="ngModel"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
                 <ul class="list-unstyled" [ngClass]="url === 'employees'? 'submenu-block' : 'dsply-none'">
-                  <li><a routerLink="employees/all-employees" [ngClass]="url2 === 'all-employees'? 'active' : 'null'">All Employees</a></li>
+                  <li><a routerLink="employees/all-employees" [ngClass]="url2 === 'all-employees'? 'active' : 'null'"
+                    name="allemployees" ngModel required #allemployees="ngModel">All Employees</a></li>
 
                   <!--<li><a routerLink="employees/holidays" [ngClass]="url2 === 'holidays'? 'active' : 'null'">Holidays</a></li>
                   <li><a routerLink="employees/leaves" [ngClass]="url2 === 'leaves'? 'active' : 'null'"><span>Leave Requests</span> <span class="badge bg-primary pull-right">1</span></a></li>
@@ -113,7 +116,7 @@
               </li>-->
 
 
-              <li class="submenu">
+              <!--<li class="submenu">
                 <a href="javascript:"><i class="fa fa-circle text-white mail-label"></i> En cours</a>
               </li>
               <li>
@@ -121,7 +124,7 @@
               </li>
               <li>
                 <a href="javascript:"><i class="fa fa-circle text-success mail-label"></i> Validé</a>
-              </li>
+              </li>-->
 
               <!--<li class="submenu">
                   <a href="javascript:void(0);"><i class="la la-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>

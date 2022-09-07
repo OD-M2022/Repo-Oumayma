@@ -1,31 +1,51 @@
-  <div class="account-page " style="color: red;">
+  <div style="color: red;">
 
-
-    <div class="container">
+    <div class="bg">
       <h3 class="account-title" >LOGIN</h3>
       <div class="account-box" >
-
-
         <div class="account-wrapper" >
           <div class="account-logo" >
-            <a href="javascript:"><img src="assets/img/logo.png" alt="Focus Technologies"></a>
+            <a href="javascript:"><img src="assets/img/avatar.png" alt="Focus Technologies"></a>
           </div>
-          <form action="index.html">
+
+
+         <!-- <form (ngSubmit)="onLogin(form)" #form="ngForm">-->
+
             <div class="form-group form-focus">
-              <label class="control-label">Username or Email</label>
-              <input class="form-control floating" type="text" >
+              <label class="control-label" placeholder ="Username or Email" ></label>
+              <input class="form-control floating" type="text"
+              name="username" ngModel required #username="ngModel">
             </div>
+
+
             <div class="form-group form-focus">
-              <label class="control-label">Password</label>
-              <input class="form-control floating" type="password">
+              <label class="control-label" placeholder="Password"></label>
+              <input class="form-control floating" type="password"
+              name="password" ngModel required #password="ngModel">
             </div>
+
             <div class="form-group text-center">
-              <button class="btn btn-primary btn-block account-btn" routerLink="../../dashboard">Login</button>
+              <button class="btn btn-primary btn-block account-btn">Login</button>
             </div>
-            <div class="text-center">
-              <a routerLink="../forgot-password">Forgot your password?</a>
-            </div>
-          </form>
+
+<!--<form #f="ngForm" (ngSubmit)="login(f)">
+<div *ngIf="invalide" class="alert alert-danger">Login et/ou Mot de passe invalides</div>
+<label for="Matricule">Login</label>
+<input ngModel #Matricule="ngModel" required  type="text" class="form-control" id="login" name="Matricule">
+<div class="alert alert-danger" *ngIf="Matricule.invalid && Matricule.dirty">Veuillez saisir votre matricule
+</div>
+<label for="NumeroCIN">Mot de passe</label>
+<input ngModel #NumeroCIN="ngModel" required minlength="6" type="text" class="form-control" id="pwd" name="NumeroCIN">
+<div class="alert alert-danger" *ngIf="NumeroCIN.invalid && NumeroCIN.touched">Le mot de passe doit être composé d'au moins 6
+  caractères</div>
+
+
+<br>
+<button [disabled]="f.invalid" type="submit" class="btn btn-primary">Valider</button> <br>-->
+
+     <!--    </form>-->
+
+
         </div>
       </div>
     </div>
