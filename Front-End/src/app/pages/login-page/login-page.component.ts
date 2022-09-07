@@ -17,7 +17,7 @@ export class LoginPageComponent implements OnInit {
    }
 
   ngOnInit() { }
-/*onLogin(form: NgForm){
+onLogin(form: NgForm){
     const { username, password } = form.value
      const employee = {
       admin: false
@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
     }
 
 
-  }}*/
+  }}
 /*
   export class LoginPageComponent implements OnInit {
   defaultSection = 'dsen';
