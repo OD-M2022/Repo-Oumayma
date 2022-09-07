@@ -33,7 +33,7 @@ onLogin(form: NgForm){
     }
 
 
-  }}
+  }
 /*
   export class LoginPageComponent implements OnInit {
   defaultSection = 'dsen';
