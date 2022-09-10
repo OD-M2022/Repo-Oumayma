@@ -95,7 +95,9 @@ import { AssetsmainComponent } from './assets/assetsmain/assetsmain.component';
 import { EmailmainComponent } from './email/emailmain/emailmain.component';
 import { ComposeComponent } from './email/compose/compose.component';
 import { MessageviewComponent } from './email/messageview/messageview.component';
+
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ForgetPageComponent } from './pages/forget-page/forget-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
@@ -104,19 +106,32 @@ import { JobsDetailsComponent } from './career/jobs-details/jobs-details.compone
 import { JobsApplicationComponent } from './career/jobs-application/jobs-application.component';
 import { ManagedJobsComponent } from './jobs/managed-jobs/managed-jobs.component';
 import { AppliedJobsComponent } from './jobs/applied-jobs/applied-jobs.component';
-import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { EmployeesService } from 'src/Services/employees.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Employee } from './models/employee';
 
+// AJOUT
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from '../Services/jwt.interceptor';
+import { AuthGuard } from "../Services/auth.guard"
+import { Role } from "./models/role"
+
 enableProdMode();
 
 const routes: Routes = [
+
+  //
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
+  //AJOUT
+  { path: 'pages/login', component: LoginPageComponent },
+  // { path: 'pages/profil/:id', component: ProfilPageComponent, canActivate: [AuthGuard] },
+
+  //
   { path: 'employees', component: EmployeeMainComponent, children: [
       { path: '', redirectTo: 'all-employees', pathMatch: 'full' },
-      { path: 'all-employees', component: AllEmployeesComponent },
+      { path: 'all-employees', component: AllEmployeesComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'all-employees/edit', component: EmployeeDetailsComponent },
       { path: 'holidays', component: HolidaysComponent },
       { path: 'holidays/edit', component: HolidayDetailsComponent },
@@ -132,7 +147,7 @@ const routes: Routes = [
   { path: 'clients', component: ClientComponent },
   { path: 'clients/edit', component: ClientDetailsComponent },
   { path: 'clients/profile/details', component: ClientProfileDetailsComponent },
-  { path: 'clients/profile/edit', component: ClientProfileEditComponent },
+  { path: 'clients/profile/edit', component: ClientProfileEditComponent},
   { path: 'projects', component: ProjectComponent },
   { path: 'projects/edit', component: ProjectDetailsComponent },
   { path: 'tasks', component: TasksComponent },
@@ -208,7 +223,7 @@ const routes: Routes = [
   { path: 'pages/register', component: RegisterPageComponent },
   { path: 'pages/forgot-password', component: ForgetPageComponent },
   { path: 'profile', component: ProfilePageComponent },
-  { path: 'profile/edit', component: ProfileEditComponent },
+  { path: 'profile/edit', component: ProfileEditComponent , canActivate: [AuthGuard] },
   { path: 'career/jobs', component: JobsListComponent },
   { path: 'career/job-details', component: JobsDetailsComponent },
   { path: 'career/job-application', component: JobsApplicationComponent },
@@ -217,6 +232,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    //
     AppComponent,
     DashboardComponent,
     EmployeeMainComponent,
@@ -306,7 +322,8 @@ const routes: Routes = [
     JobsApplicationComponent,
     ManagedJobsComponent,
     AppliedJobsComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+
     ],
   imports: [
     HttpClientModule,
@@ -329,6 +346,13 @@ const routes: Routes = [
     EventService,
     Employee,
     EmployeesService,
+        // AJOUT
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    //
     {
       provide: SLIMSCROLL_DEFAULTS,
       useValue: {

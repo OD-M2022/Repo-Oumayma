@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Employee } from 'src/app/models/employee';
-import {Router} from '@angular/router'; // import router from angular router
-import { LoginService } from 'src/Services/LoginService';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../Services/auth.service';
+import { Role } from '../../models/role';
 
 @Component({
   selector: 'app-login-page',
@@ -11,53 +11,37 @@ import { LoginService } from 'src/Services/LoginService';
 })
 
 export class LoginPageComponent implements OnInit {
+  authenticationForm: FormGroup;
 
-  employee : Employee
-  constructor(private router:Router) {
-   }
-
-  ngOnInit() { }
-onLogin(form: NgForm){
-    const { username, password } = form.value
-     const employee = {
-      admin: false
-    }
-    if (username === '0001' && password === '01123652') {
-      // redirect to admin
-          employee.admin = true
-          localStorage.setItem('Employee', JSON.stringify(employee));
-         this.router.navigate(['/employees/all-employees']);
-    } else {
-          localStorage.setItem('Employee', JSON.stringify(employee));
-          this.router.navigate(['/profile/edit']);
-    }
-
-
+  constructor(
+    public fb: FormBuilder,
+    public router: Router,
+    private authService: AuthService,
+  ) {
+    this.authenticationForm = this.fb.group({
+      username: [''],
+      password: [''],
+    });
   }
-/*
-  export class LoginPageComponent implements OnInit {
-  defaultSection = 'dsen';
-  myComment = 'Rien à signaler';
-  invalide = false;
 
-  employee : Employee
-  constructor(private loginServ: LoginService, private router: Router) {}
+  ngOnInit() {
+    if (this.authService.isLoggedIn) {
+      console.log("Already authenticated -> redirect to dashboard");
+      //this.router.navigate(['pages/dashboard'])
+    }
+  }
 
-  ngOnInit(): void {}
-
-  login(identifiants) {
-
-    this.loginServ.seConnecter(identifiants.value).subscribe(
-      (response) => {
-        localStorage.setItem('token', response['token']);
-        this.router.navigateByUrl('/profile/edit');
-        this.invalide = false;
-      },
-      (error) => {
-        this.invalide = true;
-        console.log(error);
+  authenticate() {
+    this.authService.authenticate(this.authenticationForm.value);
+    this.authService.user.subscribe(user => {
+      if (user) {
+        if (user.role === Role.User) {
+          this.router.navigate([`profile/edit`]);
+        } else if (user.role === Role.Admin) {
+          this.router.navigate([`employees/all-employees`]);
+        }
       }
-    );
+    })
   }
-*/
-  }
+
+}

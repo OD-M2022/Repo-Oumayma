@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router'
+import { AuthService } from '../Services/auth.service';
 
 declare const $: any;
 
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
   registerPage:Boolean = false;
   forgotPage:Boolean = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public authService: AuthService) {
     router.events.subscribe((event: Event) => {
 
       if (event instanceof NavigationEnd) {
@@ -27,6 +28,10 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+  logout() {
+     this.authService.logout()
+   }
 
   ngOnInit() {
 
@@ -90,10 +95,10 @@ export class AppComponent implements OnInit {
     });
 
 
-    var height = $(window).height();	
+    var height = $(window).height();
     $(".page-wrapper").css("min-height", height);
-  
-    
+
+
     $(window).resize(function(){
       if($('.page-wrapper').length > 0 ){
         var height = $(window).height();
