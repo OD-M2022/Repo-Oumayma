@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -34,13 +34,28 @@ export class AuthService {
     }
 
     authenticate(user: User) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, user).
-          subscribe((user: User) => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
-            this.userSubject.next(user);
-            return user;
-          })
+      return this.http.post<User>(`${environment.apiUrl}/users/login`, user).
+        subscribe((token: any) => {
+          // set header Authorization
+          const headers = { headers: new HttpHeaders().set('Authorization', `Bearer ${ token.token }`) }
+          // get user id
+          this.http.get(`${environment.apiUrl}/whoAmI`, headers).subscribe((id: string) => {
+            // get user role
+            this.http.get(`${environment.apiUrl}/employees`, headers).subscribe((result: any) => {
+              const profil = result.filter((p) => Number(id) === Number(p.UserId))[0]
+              console.log(profil)
+              if (profil) {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                const user: User = {token: token.token, id: id, role: profil.Role}
+                localStorage.setItem('user', JSON.stringify(user));
+                this.userSubject.next(user);
+                return user;
+              } else {
+                throw Error('User does not exist or has no Role')
+              }
+            })
+          });
+        })
     }
 
     logout() {

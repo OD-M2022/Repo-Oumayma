@@ -8,6 +8,9 @@ import { AppService } from 'src/app/app.service';
 import { EmployeesService } from 'src/Services/employees.service';
 import { HistoriqueFormation } from 'src/app/models/HistoriqueFormation';
 
+import { AuthService } from '../../Services/auth.service';
+import { cpuUsage } from 'process';
+
 
 
 @Component({
@@ -33,7 +36,7 @@ export class ProfileEditComponent implements OnInit {
 
     public newAttribute: any = {};
 
-    constructor(private employeesService: EmployeesService) {this.employee = new Employee(); }
+    constructor(private employeesService: EmployeesService, private authService: AuthService) {this.employee = new Employee(); }
 
     addFieldValue() {
 
@@ -49,6 +52,11 @@ export class ProfileEditComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.employeesService.getEmployees().subscribe((employees: Employee[]) => {
+      const userId = Number(this.authService.userValue.id)
+      const currentUser = employees.filter((employee: Employee) => Number(employee.UserId) === userId )[0]
+      this.employee = currentUser
+    })
 
     this.newAttribute.AnneeFormation='';
     this.newAttribute.NombreJours='';

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router'
 import { ISlimScrollOptions } from 'ngx-slimscroll';
+import { AuthService } from '../../Services/auth.service';
 
 declare const $: any;
 
@@ -15,9 +16,9 @@ export class HeaderComponent implements OnInit,AfterViewInit {
   menuSidebar:boolean = false;
 
   public url;
-  
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public authService: AuthService) {
     router.events.subscribe((event: Event) => {
 
       if (event instanceof NavigationEnd) {
@@ -33,12 +34,17 @@ export class HeaderComponent implements OnInit,AfterViewInit {
       }
     });
   }
-  
+
+    logout() {
+     this.authService.logout()
+   }
+
+
   ngAfterViewInit(){
     var h=$(window).height()-124;
     $('.msg-list-scroll').height(h);
-    $('.msg-sidebar .slimscroll-wrapper').height(h);  
-    
+    $('.msg-sidebar .slimscroll-wrapper').height(h);
+
   }
 
   ngOnInit() {
@@ -57,8 +63,8 @@ export class HeaderComponent implements OnInit,AfterViewInit {
 
     var h=$(window).height()-124;
     $('.msg-list-scroll').height(h);
-    $('.msg-sidebar .slimscroll-wrapper').height(h);  
-    
+    $('.msg-sidebar .slimscroll-wrapper').height(h);
+
     $(window).resize(function(){
         var h=$(window).height()-124;
         $('.msg-list-scroll').height(h);
@@ -69,14 +75,14 @@ export class HeaderComponent implements OnInit,AfterViewInit {
         if($('body').hasClass('mini-sidebar')) {
           $('body').removeClass('mini-sidebar');
           $('.subdrop + ul').slideDown();
-          
+
         } else {
           $('body').addClass('mini-sidebar');
           $('.subdrop + ul').slideUp();
         }
         return false;
-      });	
-      
+      });
+
       $(document).on('mouseover', function(e){
         e.stopPropagation();
         if($('body').hasClass('mini-sidebar') && $('#toggle_btn').is(':visible')) {
@@ -93,7 +99,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
     if($(window).width() > 991)
     {
     }
-    
+
   }
 
 }

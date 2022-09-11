@@ -3,6 +3,8 @@ import { HistoriqueFormation } from "./HistoriqueFormation";
 export  class Employee{
 //Informations personnelles
   _id: string;
+  UserId:string;
+  Role:string;
   MAJ:Boolean
   Matricule: string
   NumeroCIN: string

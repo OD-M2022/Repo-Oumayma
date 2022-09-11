@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router'
-import { AuthService } from '../Services/auth.service';
+
 
 declare const $: any;
 
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   registerPage:Boolean = false;
   forgotPage:Boolean = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, public authService: AuthService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     router.events.subscribe((event: Event) => {
 
       if (event instanceof NavigationEnd) {
@@ -28,10 +28,6 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
-  logout() {
-     this.authService.logout()
-   }
 
   ngOnInit() {
 

@@ -53,6 +53,17 @@ export class Employee extends Entity {
   })
   NumeroTelephoneN1: string;
 
+  @property({
+    type: 'string',
+    required: true,
+  })
+  Role: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  UserId: string;
   // Define well-known properties here
 
   // Indexer property to allow additional data

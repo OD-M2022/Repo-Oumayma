@@ -100,7 +100,6 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ForgetPageComponent } from './pages/forget-page/forget-page.component';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { JobsListComponent } from './career/jobs-list/jobs-list.component';
 import { JobsDetailsComponent } from './career/jobs-details/jobs-details.component';
 import { JobsApplicationComponent } from './career/jobs-application/jobs-application.component';
@@ -222,7 +221,7 @@ const routes: Routes = [
   { path: 'pages/login', component: LoginPageComponent },
   { path: 'pages/register', component: RegisterPageComponent },
   { path: 'pages/forgot-password', component: ForgetPageComponent },
-  { path: 'profile', component: ProfilePageComponent },
+
   { path: 'profile/edit', component: ProfileEditComponent , canActivate: [AuthGuard] },
   { path: 'career/jobs', component: JobsListComponent },
   { path: 'career/job-details', component: JobsDetailsComponent },
@@ -316,7 +315,7 @@ const routes: Routes = [
     LoginPageComponent,
     RegisterPageComponent,
     ForgetPageComponent,
-    ProfilePageComponent,
+
     JobsListComponent,
     JobsDetailsComponent,
     JobsApplicationComponent,
