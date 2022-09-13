@@ -52,6 +52,180 @@ export class Employee extends Entity {
     required: false,
   })
   NumeroTelephoneN1: string;
+//
+  @property({
+    type: 'string',
+    required: false,
+  })
+  DateEmbauche: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  TaillePull: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  SituationFamiliale: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NomConjoint: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  PrenomConjoint: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  DateNaissanceConjoint: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NumeroTelephoneConjoint: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NombreEnfant: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  Proches: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NombreProches: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  AdressN1: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  VilleN1: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  CodePostalN1: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  AdressN2: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  VilleN2: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  CodePostalN2: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  Email: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NumeroTelephoneN2: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  Permis: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NiveauEtude: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NiveauPrimaire: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  DateObtentionPrimaire: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  Ecole: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NiveauSecondaire: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  DateObtentionSecondaire: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  Lycee: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  NiveauBac: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  DateObtentionBac: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  ExperiencePro: string;
 
   @property({
     type: 'string',

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs-compat';
 import { Employee } from 'src/app/models/employee';
+import { User } from 'src/app/models/user';
 import { environment } from '../environments/environment';
 
 
@@ -12,7 +13,10 @@ import { environment } from '../environments/environment';
 
 export class EmployeesService {
 
-  constructor(private http : HttpClient) { }
+
+  constructor(private http : HttpClient) {
+
+  }
 
   getEmployees(){
     return this.http.get<Employee[]>("http://localhost:3000/employees");
