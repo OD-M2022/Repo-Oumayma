@@ -12,7 +12,6 @@ import { AuthService } from '../../Services/auth.service';
 import { cpuUsage } from 'process';
 
 
-
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
@@ -42,9 +41,6 @@ export class ProfileEditComponent implements OnInit {
 
        this.fieldArray.push(this.newAttribute)
        this.newAttribute = {};
-
-        /*console.log(this.fieldArray)
-        console.log(this.newAttribute)*/
     }
 
     deleteFieldValue(index) {
@@ -52,32 +48,14 @@ export class ProfileEditComponent implements OnInit {
     }
 
   ngOnInit() {
+
     this.employeesService.getEmployees().subscribe((employees: Employee[]) => {
       const userId = Number(this.authService.userValue.id)
       const currentUser = employees.filter((employee: Employee) => Number(employee.UserId) === userId )[0]
       this.employee = currentUser
     })
 
-    this.newAttribute.AnneeFormation='';
-    this.newAttribute.NombreJours='';
-    this.newAttribute.SpecialiteFormation='';
-    this.newAttribute.OrganismeFormation='';
-
-    }
-
-  /* AddRowHisto(){
-
-    let data = {} as HistoriqueFormation;
-    data.AnneeFormation='';
-    data.NombreJours='';
-    data.SpecialiteFormation='';
-    data.OrganismeFormation='';
-
-  this.historiqueFormation.push(data);
-  // console.log(this.historiqueFormation)
-  //this.employee.historiqueFormation= this.historiqueFormation
-
-}*/
+     }
 
   createEmp(form: NgForm){
 
