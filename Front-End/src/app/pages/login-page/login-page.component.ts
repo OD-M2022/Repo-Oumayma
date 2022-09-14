@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+
 import { AuthService } from '../../../Services/auth.service';
 import { Role } from '../../models/role';
 
@@ -10,26 +12,19 @@ import { Role } from '../../models/role';
   styleUrls: ['./login-page.component.css']
 })
 
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   authenticationForm: FormGroup;
 
   constructor(
     public fb: FormBuilder,
     public router: Router,
     private authService: AuthService,
+    private location: Location
   ) {
     this.authenticationForm = this.fb.group({
       email: ['', Validators.email ],
       password: ['', Validators.required ],
     });
-  }
-
-  ngOnInit() {
-    if (this.authService.isLoggedIn) {
-      console.log("Already authenticated -> redirect to dashboard");
-      console.log(this.authService.userValue.role)
-      //this.router.navigate(['pages/dashboard'])
-    }
   }
 
   authenticate() {

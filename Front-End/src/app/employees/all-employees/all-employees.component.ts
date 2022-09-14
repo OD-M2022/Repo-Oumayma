@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {IMyDpOptions} from 'mydatepicker';
 import { Router } from '@angular/router';
-import { AppService } from 'src/app/app.service';
-import { EmployeesService } from 'src/Services/employees.service';
+import { AppService } from '../../app.service';
+import { EmployeesService } from '../../../Services/employees.service';
 
 declare const $: any;
 
@@ -12,15 +11,6 @@ declare const $: any;
   styleUrls: ['./all-employees.component.css']
 })
 export class AllEmployeesComponent implements OnInit {
-
-  public myDatePickerOptions: IMyDpOptions = {
-    todayBtnTxt: 'Today',
-    dateFormat: 'dd-mm-yyyy',
-    firstDayOfWeek: 'su',
-    sunHighlight: true,
-    inline: false,
-    height: '38px'
-  };
 
   rows = [];
   public updateEmp = [];

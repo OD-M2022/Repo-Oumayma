@@ -16,31 +16,7 @@
       </div>
     </div>
   </div>
- <!-- <div class="row filter-row">
-    <div class="col-sm-3 col-xs-6">
-      <div class="form-group form-focus">
-        <label class="control-label">Employee ID</label>
-        <input type="text" class="form-control floating" (input)="searchID($event.target.value)"/>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-6">
-      <div class="form-group form-focus">
-        <label class="control-label">Employee Name</label>
-        <input type="text" class="form-control floating" (input)="searchName($event.target.value)"/>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-6">
-      <div class="form-group form-focus select-focus">
-        <label class="control-label">Designation</label>
-        <select class="select floating select-designation" (input)="searchDesg($event.target.value)">
-          <option value="">All Designations</option>
-          <option value="Web Developer">Web Developer</option>
-          <option value="Web Designer">Web Designer</option>
-          <option value="Android Developer">Android Developer</option>
-          <option value="Ios Developer">Ios Developer</option>
-        </select>
-      </div>
-    </div>-->
+
   <div class="card-body">
     <div class="row">
 
@@ -65,7 +41,7 @@
     <div class="col-md-12">
       <div class="table-responsive table-responsive-inherit">
 
-      <table class="table" [mfData]="rows" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <table class="table">
         <thead>
           <tr>
             <th style="width: 2%">
@@ -206,7 +182,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label class="control-label">Joining Date <span class="text-danger m-l-5">*</span></label>
-                <my-date-picker name="joinDate" [options]="myDatePickerOptions" [(ngModel)]="addEmp.joinDate" #joinDate="ngModel" required></my-date-picker>
+                <input  name="joinDate" [(ngModel)]="addEmp.joinDate" #joinDate="ngModel" required>
               </div>
             </div>
 

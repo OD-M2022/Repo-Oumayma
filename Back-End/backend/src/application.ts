@@ -13,7 +13,7 @@ import {MySequence} from './sequence';
 // ---------- ADD IMPORTS -------------
 import {AuthenticationComponent} from '@loopback/authentication';
 import {
-  JWTAuthenticationComponent, UserServiceBindings
+  JWTAuthenticationComponent, TokenServiceBindings, UserServiceBindings
 } from '@loopback/authentication-jwt';
 import {MongoDsDataSource} from './datasources/mongo-ds.datasource';
 // ------------------------------------
@@ -58,5 +58,8 @@ export class BackendApplication extends BootMixin(
      // Bind datasource
      this.dataSource(MongoDsDataSource, UserServiceBindings.DATASOURCE_NAME);
      // ------------- END OF SNIPPET -------------
+
+     // this.bind(TokenServiceBindings.TOKEN_EXPIRES_IN).to("1");
+
   }
 }

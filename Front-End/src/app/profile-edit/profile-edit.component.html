@@ -63,8 +63,13 @@
 <br>
         <div class="col-md-4">
           <label for="DateEmbauche"></label>
-          <my-date-picker [options]="myDatePickerOptions1" placeholder="Date d'embauche"  readonly type="text"
-            id="DateEmbauche" name="DateEmbauche" [(ngModel)]="employee.DateEmbauche" #DateEmbauche="ngModel"></my-date-picker>
+          <input type="text"
+           placeholder="Date d'embauche" 
+           class="form-control"
+           bsDatepicker
+           [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY' }"
+           type="text"
+          id="DateEmbauche" name="DateEmbauche" [(ngModel)]="employee.DateEmbauche" #DateEmbauche="ngModel">
           </div>
         </div>
 </div></div>
@@ -130,10 +135,13 @@
     <div class="col-md-6">
       <label for="DateNaissanceConjoint"></label>
       <div class="form-group">
-        <my-date-picker [options]="myDatePickerOptions1" placeholder="Date de naissance du conjoint"
-        readonly type="text" name ="DateNaissanceConjoint"
-        [(ngModel)]="employee.DateNaissanceConjoint" #DateNaissanceConjoint="ngModel"></my-date-picker>
-
+        <input type="text"
+           placeholder="Date de naissance du conjoint"
+           class="form-control"
+           bsDatepicker
+           [bsConfig]="{ isAnimated: true }"
+           readonly type="text" name ="DateNaissanceConjoint"
+          [(ngModel)]="employee.DateNaissanceConjoint" #DateNaissanceConjoint="ngModel">
       </div>
     </div>
 
@@ -193,8 +201,8 @@
 
                </select>
             </td>
-            <td><my-date-picker [options]="myDatePickerOptions1"placeholder=""  readonly type="text" for="DateNaissanceEnfant"
-                [(ngModel)]="employee.DateNaissanceEnfant" #DateNaissanceEnfant="ngModel"></my-date-picker></td>
+            <td><input angular-mydatepicker [options]="myDatePickerOptions1"placeholder=""  readonly type="text" for="DateNaissanceEnfant"
+                [(ngModel)]="employee.DateNaissanceEnfant" #DateNaissanceEnfant="ngModel"></input></td>
             <td>
                <select name="niveau_etude_enfant1" id="niveau_etude_enfant"
                class="form-control" value="0" required for="NiveauEtudeEnfant"
@@ -268,7 +276,7 @@
           <input type="text" class="form-control " placeholder="Nombre de proche(s)" name="NombreProches"
                  [(ngModel)]="employee.NombreProches" #NombreProches="ngModel" />
         </div>
-      </div></div>
+      </div>
 <br>
 <!--<div class="row">
  <div  class="col-md-12">
@@ -298,7 +306,7 @@
       </table>
  </div>
 </div>
-  </div>-->
+  </div>
 
   <div class="card-box">
     <h3 class="card-title">Cordonnées</h3>
@@ -362,7 +370,7 @@
        </div>
     </div>
 <br>
-<!--<div class="row">
+<div class="row">
   <div  class="col-md-12">
      <div class="from-group" >
        <label>Personnes à contacter en cas d'urgence</label></div>
@@ -393,8 +401,8 @@
 
     <div mat-dialog-actions align="end">
       <input type="button" class="add" value="Ajouter" ></div>
-    </div>-->
-
+    </div>
+ </div>-->
 <br>
 <div class ="row">
   <div class="col-md-12">
@@ -418,13 +426,13 @@
          </select>
        </div>
 
-        <!--<div class="col-md-4">
+        <div class="col-md-4">
           <button type="button" class="supp"><i class="fa fa-trash-o align-middle"></i> </button>
-        </div>-->
+        </div>
   </div></div>
-   <!-- <div mat-dialog-actions align="end">
+    <div mat-dialog-actions align="end">
       <input type="button" class="add" value="Ajouter">
-    </div>-->
+    </div>
   </div>
 
   <div class="card-box">
@@ -561,14 +569,6 @@
        </div>
      </div>
       </div>
-</div>
-<div mat-dialog-actions align="end">
-  <button type="submit" class="btn btn-danger" style="margin: 15px;" id="valider" name="valider">
-    <i class="fa fa-send"></i> Sauvgarder </button>
-</div>
-</form>
-
-
      <!-- <div class="row">
 
         <div class="col-md-4">
@@ -584,9 +584,9 @@
      </div>
  <div class="col-md-4">
       <div class="form-group"><label for="DateObtentionPrimaire">
-        <my-date-picker [options]="myDatePickerOptions1"
+        <input angular-mydatepicker [options]="myDatePickerOptions1"
         placeholder="Date d'obtention"  readonly type="text"  name="DateObtentionPrimaire"
-         [(ngModel)]="employee.DateObtentionPrimaire" #DateObtentionPrimaire="ngModel" ></my-date-picker>
+         [(ngModel)]="employee.DateObtentionPrimaire" #DateObtentionPrimaire="ngModel" ></input>
      </label> </div></div>
 
       <div class="col-md-4">
@@ -621,8 +621,8 @@
 
 <div class="col-md-4">
       <div class="form-group">
-        <label for="DateObtentionSecondaire"><my-date-picker [options]="myDatePickerOptions1" placeholder="Date d'obtention"  readonly type="text"
-          [(ngModel)]="employee.DateObtentionSecondaire" #DateObtentionSecondaire="ngModel" name="DateObtentionSecondaire"></my-date-picker>
+        <label for="DateObtentionSecondaire"><input angular-mydatepicker [options]="myDatePickerOptions1" placeholder="Date d'obtention"  readonly type="text"
+          [(ngModel)]="employee.DateObtentionSecondaire" #DateObtentionSecondaire="ngModel" name="DateObtentionSecondaire"></input>
       </label></div>
     </div>
 
@@ -714,7 +714,7 @@
       </div>
 
 
-      <div class="row">
+    <!--  <div class="row">
         <div  class="col-md-12">
            <div class="from-group" >
              <label>Diplômes</label></div>
@@ -863,8 +863,8 @@
                     <option value="133">ISEAHM</option>
                     <option value="134">ISEAHME</option>
                     </select></td>
-                  <td><my-date-picker [options]="myDatePickerOptions1"
-                      readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></my-date-picker></td>
+                  <td><input angular-mydatepicker [options]="myDatePickerOptions1"
+                      readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></input></td>
                   <td class="table-action">
                     <button type="button" class="supp"><i class="fa fa-trash-o align-middle"></i> </button>
                  </td>
@@ -937,11 +937,11 @@
            <td><label for="PostePro">
               <input name="PostePro" ngModel id="poste" type="text"  class="form-control" required/>
           </label> </td>
-           <td> <label for="DateDebutPostePro"><my-date-picker [options]="myDatePickerOptions1"
-            readonly type="text" name="DateDebutPostePro" ngModel></my-date-picker>
+           <td> <label for="DateDebutPostePro"><input angular-mydatepicker [options]="myDatePickerOptions1"
+            readonly type="text" name="DateDebutPostePro" ngModel></input>
         </label> </td>
-           <td> <my-date-picker [options]="myDatePickerOptions1"
-             readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></my-date-picker>
+           <td> <input angular-mydatepicker [options]="myDatePickerOptions1"
+             readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></input>
           </td>
            <td><input name="serv1" id="serv" type="text"  class="form-control" value="" required/></td>
            <td><input name="entr1" id="serv" type="text"  class="form-control" value="" required/></td>
@@ -1107,12 +1107,12 @@
         </select></td>
         <td><select  name="hist_depart" class="form-control" value="" ><option value=""></option><option value="APP" >APPROVISIONNEMENT</option><option value="CPT" >COMPTABILITE</option><option value="CRE" >CREA</option><option value="DQP" >DEVELOPPEMENT QUALITE PRODUIT</option><option value="FINA" >FINANCE</option><option value="GACT" >GESTION DES ACTIFS</option><option value="GNER" >ACHTAS GENERAUX</option><option value="JUR" >JURIDIQUE</option><option value="MARK" >MARKETING</option><option value="PAP" >PLANIFICATION ACTIVITES PROMO</option><option value="PGC" >PRODUIT GRANDE CONSOMMATION</option><option value="PL" >PL</option><option value="SCR" >SECURITE</option><option value="SPT3" >SPOT 3</option><option value="TRS" >TRANSIT</option><option value="VEIL" >VEILLE ET AUDIT METIER</option></select></td>
 
-       <td> <my-date-picker [options]="myDatePickerOptions1"
-        readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></my-date-picker>
+       <td> <input angular-mydatepicker [options]="myDatePickerOptions1"
+        readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></input>
       </td>
 
-       <td> <my-date-picker [options]="myDatePickerOptions1"
-         readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></my-date-picker>
+       <td> <input angular-mydatepicker [options]="myDatePickerOptions1"
+         readonly type="text" [(ngModel)]="addE.start" name="start" #start="ngModel"></input>
       </td>
       <td class="table-action">
         <button type="button" class="supp"><i class="fa fa-trash-o align-middle"></i> </button>
@@ -1191,14 +1191,14 @@
 
   </div>
  </div>
-</div>
+</div>-->
 
 
     </div>
 <div mat-dialog-actions align="end">
  <button type="submit" class="btn btn-danger"style="margin: 15px;"  id="valider" name="valider"  >
     <i class="fa fa-send"></i> Sauvgarder </button></div>
-  </form>-->
+  </form>
 
 
 

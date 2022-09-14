@@ -33,7 +33,6 @@ export class AuthService {
       return this.userValue.token
     }
 
-
     authenticate(user: User) {
       return this.http.post<User>(`${environment.apiUrl}/users/login`, user).
         subscribe((token: any) => {
@@ -44,7 +43,6 @@ export class AuthService {
             // get user role
             this.http.get(`${environment.apiUrl}/employees`, headers).subscribe((result: any) => {
               const profil = result.filter((p) => Number(id) === Number(p.UserId))[0]
-              console.log(profil)
               if (profil) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 const user: User = {token: token.token, id: id, role: profil.Role}
@@ -63,6 +61,6 @@ export class AuthService {
         // remove user from local storage to log user out
         localStorage.removeItem('user');
         this.userSubject.next(null);
-        this.router.navigate(['pages/login']);
+        this.router.navigate(['login']);
     }
 }
